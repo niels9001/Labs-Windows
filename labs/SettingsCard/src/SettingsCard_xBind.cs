@@ -9,6 +9,11 @@ namespace CommunityToolkit.Labs.WinUI;
 /// </summary>
 public partial class SettingsCard_xBind: ButtonBase
 {
+    private const string NormalState = "Normal";
+    private const string PointerOverState = "PointerOver";
+    private const string PressedState = "Pressed";
+    private const string DisabledState = "Disabled";
+
     /// <summary>
     /// Creates a new instance of the <see cref="SettingsCard_xBind"/> class.
     /// </summary>
@@ -91,4 +96,25 @@ public partial class SettingsCard_xBind: ButtonBase
             text.Opacity = 1;
         }
     }
+
+    protected override void OnPointerEntered(PointerRoutedEventArgs e)
+    {
+        base.OnPointerEntered(e);
+        VisualStateManager.GoToState(this, PointerOverState, true);
+    }
+
+    /// <inheritdoc />
+    protected override void OnPointerExited(PointerRoutedEventArgs e)
+    {
+        base.OnPointerExited(e);
+        VisualStateManager.GoToState(this, NormalState, true);
+    }
+
+    /// <inheritdoc />
+    protected override void OnPointerPressed(PointerRoutedEventArgs e)
+    {
+        base.OnPointerPressed(e);
+        VisualStateManager.GoToState(this, PressedState, true);
+    }
+
 }
