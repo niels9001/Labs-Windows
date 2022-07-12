@@ -7,7 +7,7 @@ namespace CommunityToolkit.Labs.WinUI;
 /// <summary>
 /// An example templated control.
 /// </summary>
-public partial class SettingsCard_xBind: Control
+public partial class SettingsCard_xBind: ButtonBase
 {
     /// <summary>
     /// Creates a new instance of the <see cref="SettingsCard_xBind"/> class.
@@ -30,21 +30,39 @@ public partial class SettingsCard_xBind: Control
         new PropertyMetadata(defaultValue: new Thickness(0)));
 
     /// <summary>
-    /// The backing <see cref="DependencyProperty"/> for the <see cref="MyProperty"/> property.
+    /// The backing <see cref="DependencyProperty"/> for the <see cref="Title"/> property.
     /// </summary>
-    public static readonly DependencyProperty MyPropertyProperty = DependencyProperty.Register(
-        nameof(MyProperty),
+    public static readonly DependencyProperty TitleProperty = DependencyProperty.Register(
+        nameof(Title),
         typeof(string),
         typeof(SettingsCard_xBind),
-        new PropertyMetadata(defaultValue: string.Empty, (d, e) => ((SettingsCard_xBind)d).OnMyPropertyChanged((string)e.OldValue, (string)e.NewValue)));
+        new PropertyMetadata(defaultValue: string.Empty, (d, e) => ((SettingsCard_xBind)d).OnTitlePropertyChanged((string)e.OldValue, (string)e.NewValue)));
+
+    /// <summary>
+    /// The backing <see cref="DependencyProperty"/> for the <see cref="Description"/> property.
+    /// </summary>
+    public static readonly DependencyProperty DescriptionProperty = DependencyProperty.Register(
+        nameof(Description),
+        typeof(string),
+        typeof(SettingsCard_xBind),
+        new PropertyMetadata(defaultValue: string.Empty, (d, e) => ((SettingsCard_xBind)d).OnDescriptionPropertyChanged((string)e.OldValue, (string)e.NewValue)));
 
     /// <summary>
     /// Gets or sets an example string. A basic DependencyProperty example.
     /// </summary>
-    public string MyProperty
+    public string Title
     {
-        get => (string)GetValue(MyPropertyProperty);
-        set => SetValue(MyPropertyProperty, value);
+        get => (string)GetValue(TitleProperty);
+        set => SetValue(TitleProperty, value);
+    }
+
+    /// <summary>
+    /// Gets or sets an example string. A basic Description example.
+    /// </summary>
+    public string Description
+    {
+        get => (string)GetValue(DescriptionProperty);
+        set => SetValue(DescriptionProperty, value);
     }
 
     /// <summary>
@@ -56,7 +74,12 @@ public partial class SettingsCard_xBind: Control
         set => SetValue(ItemPaddingProperty, value);
     }
 
-    protected virtual void OnMyPropertyChanged(string oldValue, string newValue)
+    protected virtual void OnTitlePropertyChanged(string oldValue, string newValue)
+    {
+        // Do something with the changed value.
+    }
+
+    protected virtual void OnDescriptionPropertyChanged(string oldValue, string newValue)
     {
         // Do something with the changed value.
     }

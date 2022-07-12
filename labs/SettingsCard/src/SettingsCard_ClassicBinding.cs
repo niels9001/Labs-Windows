@@ -8,7 +8,7 @@ namespace CommunityToolkit.Labs.WinUI;
 /// An example templated control.
 /// </summary>
 [TemplatePart(Name = nameof(PART_HelloWorld), Type = typeof(TextBlock))]
-public partial class SettingsCard_ClassicBinding : Control
+public partial class SettingsCard_ClassicBinding : ButtonBase
 {
     /// <summary>
     /// Creates a new instance of the <see cref="SettingsCard_ClassicBinding"/> class.
