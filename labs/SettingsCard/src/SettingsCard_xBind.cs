@@ -103,14 +103,11 @@ public partial class SettingsCard_xBind: ButtonBase
         VisualStateManager.GoToState(this, PointerOverState, true);
     }
 
-    /// <inheritdoc />
     protected override void OnPointerExited(PointerRoutedEventArgs e)
     {
         base.OnPointerExited(e);
         VisualStateManager.GoToState(this, NormalState, true);
     }
-
-    /// <inheritdoc />
     protected override void OnPointerPressed(PointerRoutedEventArgs e)
     {
         base.OnPointerPressed(e);
