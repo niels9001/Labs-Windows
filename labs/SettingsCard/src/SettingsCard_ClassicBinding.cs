@@ -7,7 +7,11 @@ namespace CommunityToolkit.Labs.WinUI;
 /// <summary>
 /// An example templated control.
 /// </summary>
-[TemplatePart(Name = nameof(PART_HelloWorld), Type = typeof(TextBlock))]
+//[TemplatePart(Name = nameof(PART_HelloWorld), Type = typeof(TextBlock))]
+//private const string NormalState = "Normal";
+//private const string PointerOverState = "PointerOver";
+//private const string PressedState = "Pressed";
+//private const string DisabledState = "Disabled";
 public partial class SettingsCard_ClassicBinding : ButtonBase
 {
     /// <summary>
@@ -28,19 +32,19 @@ public partial class SettingsCard_ClassicBinding : ButtonBase
     {
         base.OnApplyTemplate();
 
-        // Detach all attached events when a new template is applied.
-        if (PART_HelloWorld is not null)
-        {
-            PART_HelloWorld.PointerEntered -= Element_PointerEntered;
-        }
+        //// Detach all attached events when a new template is applied.
+        //if (PART_HelloWorld is not null)
+        //{
+        //    PART_HelloWorld.PointerEntered -= Element_PointerEntered;
+        //}
 
-        // Attach events when the template is applied and the control is loaded.
-        PART_HelloWorld = GetTemplateChild(nameof(PART_HelloWorld)) as TextBlock;
+        //// Attach events when the template is applied and the control is loaded.
+        //PART_HelloWorld = GetTemplateChild(nameof(PART_HelloWorld)) as TextBlock;
         
-        if (PART_HelloWorld is not null)
-        {
-            PART_HelloWorld.PointerEntered += Element_PointerEntered;
-        }
+        //if (PART_HelloWorld is not null)
+        //{
+        //    PART_HelloWorld.PointerEntered += Element_PointerEntered;
+        //}
     }
 
     /// <summary>
@@ -53,21 +57,39 @@ public partial class SettingsCard_ClassicBinding : ButtonBase
         new PropertyMetadata(defaultValue: new Thickness(0)));
 
     /// <summary>
-    /// The backing <see cref="DependencyProperty"/> for the <see cref="MyProperty"/> property.
+    /// The backing <see cref="DependencyProperty"/> for the <see cref="Title"/> property.
     /// </summary>
-    public static readonly DependencyProperty MyPropertyProperty = DependencyProperty.Register(
-        nameof(MyProperty),
+    public static readonly DependencyProperty TitleProperty = DependencyProperty.Register(
+        nameof(Title),
         typeof(string),
         typeof(SettingsCard_ClassicBinding),
-        new PropertyMetadata(defaultValue: string.Empty, (d, e) => ((SettingsCard_ClassicBinding)d).OnMyPropertyChanged((string)e.OldValue, (string)e.NewValue)));
+        new PropertyMetadata(defaultValue: string.Empty, (d, e) => ((SettingsCard_ClassicBinding)d).OnTitlePropertyChanged((string)e.OldValue, (string)e.NewValue)));
+
+    /// <summary>
+    /// The backing <see cref="DependencyProperty"/> for the <see cref="Description"/> property.
+    /// </summary>
+    public static readonly DependencyProperty DescriptionProperty = DependencyProperty.Register(
+        nameof(Description),
+        typeof(string),
+        typeof(SettingsCard_ClassicBinding),
+        new PropertyMetadata(defaultValue: string.Empty, (d, e) => ((SettingsCard_ClassicBinding)d).OnDescriptionPropertyChanged((string)e.OldValue, (string)e.NewValue)));
 
     /// <summary>
     /// Gets or sets an example string. A basic DependencyProperty example.
     /// </summary>
-    public string MyProperty
+    public string Title
     {
-        get => (string)GetValue(MyPropertyProperty);
-        set => SetValue(MyPropertyProperty, value);
+        get => (string)GetValue(TitleProperty);
+        set => SetValue(TitleProperty, value);
+    }
+
+    /// <summary>
+    /// Gets or sets an example string. A basic Description example.
+    /// </summary>
+    public string Description
+    {
+        get => (string)GetValue(DescriptionProperty);
+        set => SetValue(DescriptionProperty, value);
     }
 
     /// <summary>
@@ -79,7 +101,12 @@ public partial class SettingsCard_ClassicBinding : ButtonBase
         set => SetValue(ItemPaddingProperty, value);
     }
 
-    protected virtual void OnMyPropertyChanged(string oldValue, string newValue)
+    protected virtual void OnTitlePropertyChanged(string oldValue, string newValue)
+    {
+        // Do something with the changed value.
+    }
+
+    protected virtual void OnDescriptionPropertyChanged(string oldValue, string newValue)
     {
         // Do something with the changed value.
     }
@@ -91,4 +118,22 @@ public partial class SettingsCard_ClassicBinding : ButtonBase
             text.Opacity = 1;
         }
     }
+
+    //protected override void OnPointerEntered(PointerRoutedEventArgs e)
+    //{
+    //    base.OnPointerEntered(e);
+    //    VisualStateManager.GoToState(this, PointerOverState, true);
+    //}
+
+    //protected override void OnPointerExited(PointerRoutedEventArgs e)
+    //{
+    //    base.OnPointerExited(e);
+    //    VisualStateManager.GoToState(this, NormalState, true);
+    //}
+    //protected override void OnPointerPressed(PointerRoutedEventArgs e)
+    //{
+    //    base.OnPointerPressed(e);
+    //    VisualStateManager.GoToState(this, PressedState, true);
+    //}
+
 }

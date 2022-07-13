@@ -28,17 +28,3 @@ TODO: Fill in information about this experiment and how to get started here...
 ### Implict style
 
 > [!SAMPLE SettingsCardControlSample]
-
-### Custom style
-
-> [!SAMPLE SettingsCardCustomStyleSample]
-
-# Templated Controls with x:Bind
-### Implict style
-
-> [!SAMPLE BackedSettingsCardControlSample]
-
-### Custom style
-
-> [!SAMPLE SettingsCardCustomStyleBackedSample]
-
